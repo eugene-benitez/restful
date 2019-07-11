@@ -1,0 +1,71 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to Restful Tasks CRUD!
+  </h1>
+
+  <img width="100" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <br><br>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      Create a Task!
+      <form (submit)="onSubmit()">
+        <p> {{ newTask | json }} </p>
+        <label>Title:</label>
+        <br>
+        <input name="newTask.title" [(ngModel)]="newTask.title" />
+        <br><br>
+        <label>Description:</label>
+        <br>
+        <input name="newTask.description" [(ngModel)]="newTask.description" />
+        <br>
+        <br>
+        <input class="btn btn-success" type="submit" value="Create Task" />
+      </form>
+      <br>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p style="border: 2px solid black; padding: 50px;" *ngFor="let info of tasks">{{info.title}} -
+        {{info.description}} <br><br> <button (click)="onButtonClickParam(info._id)" class="btn btn-danger">Edit Task
+        </button><button (click)="deleteButtonClickParam(info._id)" style="margin: 10px;"
+          class="btn btn-danger">Delete</button></p>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+      <div *ngIf="editForm">
+        Edit this Quote!
+        <form (submit)="onEdit()">
+          <p>{{ singleTask | json }} </p>
+          <p> {{ editTask.title + " - " + editTask.description | json }} </p>
+          <label>Title:</label>
+          <br>
+          <input name="editTask.title" [(ngModel)]="editTask.title" />
+          <br><br>
+          <label>Description:</label>
+          <br>
+          <input name="editTask.description" [(ngModel)]="editTask.description" />
+          <br>
+          <br>
+          <input class="btn btn-success" type="submit" value="Edit Task" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
